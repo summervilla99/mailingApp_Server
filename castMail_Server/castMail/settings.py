@@ -7,11 +7,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xs$hl9vj2t@-q8w=+217e#v6*!)0!l2nvtw49vsw1=+p4e&3hb'
 DEBUG = True
 ALLOWED_HOSTS = []
-MIDDLEWARE = ["corsheaders.middleware.CorsMiddleware", *MIDDLEWARE]
+# MIDDLEWARE = ["corsheaders.middleware.CorsMiddleware", *MIDDLEWARE]
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
 CSRF_TRUSTED_ORIGINS = ["http://localhost:5173"]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -20,7 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'castMail',
+    'mailer',
     'corsheaders',
 ]
 
@@ -92,5 +98,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
