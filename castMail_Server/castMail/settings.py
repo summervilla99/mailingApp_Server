@@ -7,6 +7,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xs$hl9vj2t@-q8w=+217e#v6*!)0!l2nvtw49vsw1=+p4e&3hb'
 DEBUG = True
 ALLOWED_HOSTS = []
+MIDDLEWARE = ["corsheaders.middleware.CorsMiddleware", *MIDDLEWARE]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:5173"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -16,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'castMail',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
